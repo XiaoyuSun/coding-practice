@@ -1,5 +1,0 @@
-https://leetcode.com/problems/longest-increasing-subsequence/description/
-https://leetcode.com/problems/longest-palindromic-substring/description/
-https://leetcode.com/problems/sort-colors/description/
-https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/
-https://leetcode.com/problems/longest-common-subsequence/description/
