@@ -3,7 +3,7 @@
  * @param {string} word
  * @return {boolean}
  */
-var exist = function(board, word) {
+var exist = function (board, word) {
   if (!board || !word) {
     return false;
   }
@@ -16,17 +16,24 @@ var exist = function(board, word) {
       return true;
     }
 
-    if (r < 0 || r >= rowLen || c < 0 || c >= colLen || board[r][c] !== word[index]) {
+    if (
+      r < 0 ||
+      r >= rowLen ||
+      c < 0 ||
+      c >= colLen ||
+      board[r][c] !== word[index]
+    ) {
       return false;
     }
 
     const tmp = board[r][c];
-    board[r][c] = '$';
+    board[r][c] = "$";
 
-    const found = dfs(r + 1, c, index + 1) ||
-                  dfs(r - 1, c, index + 1) ||
-                  dfs(r, c + 1, index + 1) ||
-                  dfs(r, c - 1, index + 1);
+    const found =
+      dfs(r + 1, c, index + 1) ||
+      dfs(r - 1, c, index + 1) ||
+      dfs(r, c + 1, index + 1) ||
+      dfs(r, c - 1, index + 1);
 
     board[r][c] = tmp;
 

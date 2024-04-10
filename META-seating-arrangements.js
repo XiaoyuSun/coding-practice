@@ -19,81 +19,78 @@ If the guests sit down in the permutation [3, 1, 4, 2] in clockwise order around
 
 // Add any extra import statements you may need here
 
-
 // Add any helper functions you may need here
-
 
 function minOverallAwkwardness(arr) {
   // Write your code here
   const insert = (arr, position, value) => {
-  return [...arr.slice(0, position), value, ...arr.slice(position)]
-}
+    return [...arr.slice(0, position), value, ...arr.slice(position)];
+  };
 
-const permutation = (inputArr) => {
-  let resArr = [];
+  const permutation = (inputArr) => {
+    let resArr = [];
 
-  for (let i=0; i< inputArr.length; i++) {
-    if (resArr.length === 0) {
-      resArr.push([inputArr[i]])
-    } else {
-      let tmpArr = [];
+    for (let i = 0; i < inputArr.length; i++) {
+      if (resArr.length === 0) {
+        resArr.push([inputArr[i]]);
+      } else {
+        let tmpArr = [];
 
-      while (resArr.length > 0) {
-        let subarr = resArr.pop();
+        while (resArr.length > 0) {
+          let subarr = resArr.pop();
 
-        for (let time=0; time<subarr.length+1; time++) {
-          tmpArr.push(insert(subarr, time, inputArr[i]))
+          for (let time = 0; time < subarr.length + 1; time++) {
+            tmpArr.push(insert(subarr, time, inputArr[i]));
+          }
         }
+
+        resArr = [...tmpArr];
+      }
+    }
+
+    return resArr;
+  };
+
+  function minOverallAwkwardness(arr) {
+    const arrs = permutation(arr);
+    let tracking = [];
+
+    for (let arr of arrs) {
+      let max = Math.abs(arr[0] - arr[arr.length - 1]);
+
+      for (let index = 0; index < arr.length - 1; index++) {
+        max = Math.max(max, Math.abs(arr[index] - arr[index + 1]));
       }
 
-      resArr = [...tmpArr]
+      tracking.push(max);
     }
+    // console.log('tracking', tracking)
+
+    return tracking.sort((a, b) => a - b).shift();
   }
-
-  return resArr;
-}
-
-function minOverallAwkwardness(arr) {
-  const arrs = permutation(arr);
-  let tracking = [];
-
-  for (let arr of arrs) {
-    let max = Math.abs(arr[0]-arr[arr.length-1]);
-
-    for (let index=0; index < arr.length-1; index++) {
-      max = Math.max(max, Math.abs(arr[index] - arr[index+1]))
-    }
-
-    tracking.push(max);
-  }
-  // console.log('tracking', tracking)
-
-  return tracking.sort((a,b) => a-b).shift();
-}
 }
 
 // These are the tests we use to determine if the solution is correct.
 // You can add your own at the bottom.
 function printInteger(n) {
-  var out = '[' + n + ']';
+  var out = "[" + n + "]";
   return out;
 }
 
 var test_case_number = 1;
 
 function check(expected, output) {
-  var result = (expected == output);
+  var result = expected == output;
   var rightTick = "\u2713";
   var wrongTick = "\u2717";
   if (result) {
-    var out = rightTick + ' Test #' + test_case_number;
+    var out = rightTick + " Test #" + test_case_number;
     console.log(out);
-  }
-  else {
-    var out = '';
-    out += wrongTick + ' Test #' + test_case_number + ': Expected ';
+  } else {
+    var out = "";
+    out += wrongTick + " Test #" + test_case_number + ": Expected ";
     out += printInteger(expected);
-    out += ' Your output: ';
+    out += " Your output: ";
     out += printInteger(output);
     console.log(out);
   }

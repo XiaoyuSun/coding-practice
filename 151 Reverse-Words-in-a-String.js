@@ -1,33 +1,33 @@
 const solution = (s) => {
-  let res = ''
-  let word = '';
+  let res = "";
+  let word = "";
 
-  for (let i=0; i<s.length; i++) {
-    if (word.length > 0 && s[i] === ' ') {
+  for (let i = 0; i < s.length; i++) {
+    if (word.length > 0 && s[i] === " ") {
       if (res.length > 0) {
-        res = word + ' ' + res;
+        res = word + " " + res;
       } else {
         res = word;
       }
-      word = '';
+      word = "";
     }
 
-    if (s[i] !== ' ') {
-      word += s[i]
+    if (s[i] !== " ") {
+      word += s[i];
     }
   }
 
   if (word.length > 0) {
     if (res) {
-      res = word + ' ' + res;
+      res = word + " " + res;
     } else {
-      res = word
+      res = word;
     }
   }
 
   return res;
-}
+};
 
-let s = 'EPY2giL'
-console.log(solution(s).length === s.length)
-console.log(solution(s))
+let s = "EPY2giL";
+console.log(solution(s).length === s.length);
+console.log(solution(s));

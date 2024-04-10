@@ -27,5 +27,5 @@ var deleteDuplicates = function (head) {
     head = head.next;
   }
 
-  return sentinel.next
+  return sentinel.next;
 };

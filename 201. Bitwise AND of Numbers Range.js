@@ -25,8 +25,13 @@ var rangeBitwiseAnd = function (left, right) {
   if (left === right) return left;
 
   for (let i = 1; i <= 31; i++) {
-    if (left >= 2 ** i && right >= 2 ** i && left < 2 ** (i + 1) && right < 2 ** (i + 1)) {
-      return 2 ** i + rangeBitwiseAnd(left - 2 ** i, right - 2 ** i)
+    if (
+      left >= 2 ** i &&
+      right >= 2 ** i &&
+      left < 2 ** (i + 1) &&
+      right < 2 ** (i + 1)
+    ) {
+      return 2 ** i + rangeBitwiseAnd(left - 2 ** i, right - 2 ** i);
     }
   }
 

@@ -22,54 +22,52 @@ Add 9 + 1 for a penalty of 10. The penalties sum to 26.
 */
 // Add any helper functions you may need here
 
-
 function getTotalTime(arr) {
   // Write your code here
   if (arr.length === 0) {
     return 0;
   }
-  
+
   if (arr.length === 1) {
-    return arr[0]
+    return arr[0];
   }
-  
-  arr.sort((a,b) => a-b)
-  
+
+  arr.sort((a, b) => a - b);
+
   let index = arr.length - 1;
-  
-  while (index>1) {
-    let penalty = arr[index] + arr[index-1];
-  
+
+  while (index > 1) {
+    let penalty = arr[index] + arr[index - 1];
+
     arr[index] = penalty;
-    arr[index-1] = penalty;
+    arr[index - 1] = penalty;
     index -= 1;
   }
-  
-  return arr.reduce((acc, item) => acc+item)
+
+  return arr.reduce((acc, item) => acc + item);
 }
 
 // These are the tests we use to determine if the solution is correct.
 // You can add your own at the bottom.
 function printInteger(n) {
-  var out = '[' + n + ']';
+  var out = "[" + n + "]";
   return out;
 }
 
 var test_case_number = 1;
 
 function check(expected, output) {
-  var result = (expected == output);
+  var result = expected == output;
   var rightTick = "\u2713";
   var wrongTick = "\u2717";
   if (result) {
-    var out = rightTick + ' Test #' + test_case_number;
+    var out = rightTick + " Test #" + test_case_number;
     console.log(out);
-  }
-  else {
-    var out = '';
-    out += wrongTick + ' Test #' + test_case_number + ': Expected ';
+  } else {
+    var out = "";
+    out += wrongTick + " Test #" + test_case_number + ": Expected ";
     out += printInteger(expected);
-    out += ' Your output: ';
+    out += " Your output: ";
     out += printInteger(output);
     console.log(out);
   }

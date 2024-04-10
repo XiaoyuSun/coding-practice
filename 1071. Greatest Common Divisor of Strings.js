@@ -4,21 +4,21 @@
  * @return {string}
  */
 var gcdOfStrings = function (str1, str2) {
-  if (str2.length === 0) return '';
+  if (str2.length === 0) return "";
   if (str1.length === str2.length) {
-    return str1 === str2 ? str1 : '';
+    return str1 === str2 ? str1 : "";
   }
 
   function helper(s, t) {
     if (s.length === t.length) {
-      return s === t ? s : '';
+      return s === t ? s : "";
     }
 
     let index = 0;
 
     while (index < s.length && index < t.length) {
       if (s[index] !== t[index]) {
-        return '';
+        return "";
       }
 
       index += 1;
@@ -29,7 +29,7 @@ var gcdOfStrings = function (str1, str2) {
     }
 
     if (index < t.length) {
-      return helper(s, t.substring(index))
+      return helper(s, t.substring(index));
     }
   }
 

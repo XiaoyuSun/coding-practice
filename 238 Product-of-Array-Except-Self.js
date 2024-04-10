@@ -8,7 +8,7 @@ const solution = (nums) => {
       prefix[i] = 1;
     } else {
       prefix[i] = prefix[i-1] * nums[i-1]
-    } 
+    }
   }
 
   for (let i = nums.length-1; i >= 0; i--) {
