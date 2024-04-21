@@ -7,7 +7,11 @@ var findFarmland = function (land) {
 
   for (let i = 0; i < land.length; ++i) {
     for (let j = 0; j < land[i].length; ++j) {
-      if (land[i][j] === 1 && (i === 0 || land[i - 1][j] === 0) && (j === 0 || land[i][j - 1] === 0)) {
+      if (
+        land[i][j] === 1 &&
+        (i === 0 || land[i - 1][j] === 0) &&
+        (j === 0 || land[i][j - 1] === 0)
+      ) {
         let r = i;
         let c = j;
 
@@ -19,11 +23,11 @@ var findFarmland = function (land) {
           ++c;
         }
 
-        ans.push([i, j, r, c])
+        ans.push([i, j, r, c]);
 
         for (let a = i; a <= r; ++a) {
           for (let b = j; b <= c; ++b) {
-            land[a][b] = 0
+            land[a][b] = 0;
           }
         }
       }
